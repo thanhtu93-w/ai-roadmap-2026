@@ -18,19 +18,22 @@ while True:
         add_student(name,score)
     elif control == "2":
         name= input("Enter student name : ")
+        found = False
         for s in students:
             if s["name"]==name:
                 score= int(input("Enter student new score : "))
                 s["score"]=score
                 print("Student modified")
+                found=True
                 break
-            else:
+        if not found:
                 print("Student not found")
     elif control == "3":
         if len(students)==0:
             print("No student found")
             continue
-        highest_score=0
+        highest_score = students[0]["score"]
+        highest_score_name = students[0]["name"]    
         for s in students:
             if s["score"]>highest_score:
                 highest_score=s["score"]
